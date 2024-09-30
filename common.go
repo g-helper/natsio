@@ -1,4 +1,4 @@
-package natsio
+package message_broker
 
 import (
 	"errors"
