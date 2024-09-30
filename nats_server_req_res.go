@@ -14,6 +14,7 @@ const requestTimeout = 10 * time.Second
 
 // Request ...
 func Request(subject string, payload []byte) (*nats.Msg, error) {
+	IsDisconnected()
 	timeout := requestTimeout
 	if GetConfig().RequestTimeout > 0 {
 		timeout = GetConfig().RequestTimeout
@@ -26,15 +27,18 @@ func Request(subject string, payload []byte) (*nats.Msg, error) {
 }
 
 func Publish(sub string, payload []byte) error {
+	IsDisconnected()
 	return GetConn().Publish(sub, payload)
 }
 
 func PublishRequest(sub, reply string, data []byte) error {
+	IsDisconnected()
 	return GetConn().PublishRequest(sub, reply, data)
 }
 
 // Reply ...
 func Reply(msg *nats.Msg, payload []byte) error {
+	IsDisconnected()
 	return GetConn().Publish(msg.Reply, payload)
 }
 
@@ -58,6 +62,7 @@ func Response(msg *nats.Msg, payload interface{}, message string) error {
 
 // QueueSubscribe ...
 func QueueSubscribe(subject, queue string, cb nats.MsgHandler) {
+	IsDisconnected()
 	_, err := GetConn().QueueSubscribe(subject, queue, cb)
 	if err != nil {
 		fmt.Println(fmt.Sprintf("[NATS SERVER] - queue subscribe subject %s, error: %s", subject, err.Error()))
@@ -65,4 +70,10 @@ func QueueSubscribe(subject, queue string, cb nats.MsgHandler) {
 	}
 	log.Println("[NATS SERVER] - queue subscribe subject: ", subject)
 	return
+}
+
+func IsDisconnected() {
+	if GetConn() == nil {
+		panic("[NATS SERVER] Disconnected")
+	}
 }
