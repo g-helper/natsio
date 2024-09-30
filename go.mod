@@ -1,4 +1,4 @@
-module natsio
+module github.com/g-helper/natsio
 
 go 1.22
 
