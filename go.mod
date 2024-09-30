@@ -1,4 +1,4 @@
-module message_broker
+module natsio
 
 go 1.22
 
