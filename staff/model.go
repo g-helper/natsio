@@ -24,7 +24,9 @@ type GetPartnerInfoRes struct {
 
 // Partner ...
 type Partner struct {
-	ID   string `json:"_id"`
-	Name string `json:"name"`
-	Code string `json:"code"`
+	ID        string `json:"_id"`
+	Name      string `json:"name"`
+	Code      string `json:"code"`
+	AccessKey string `bson:"accessKey"`
+	SecretKey string `bson:"secretKey"`
 }
