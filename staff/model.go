@@ -30,3 +30,13 @@ type Partner struct {
 	AccessKey string `bson:"accessKey"`
 	SecretKey string `bson:"secretKey"`
 }
+
+// GetPartnerInfoByAccessKeyReq ...
+type GetPartnerInfoByAccessKeyReq struct {
+	AccessKey string `json:"accessKey"`
+}
+
+// GetPartnerInfoByAccessKeyRes ...
+type GetPartnerInfoByAccessKeyRes struct {
+	Data Partner `json:"data"`
+}
