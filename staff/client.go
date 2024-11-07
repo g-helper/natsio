@@ -15,7 +15,7 @@ type client struct {
 }
 
 func (c client) GetPartnerInfo(req GetPartnerInfoByCodeReq) (res GetPartnerInfoRes, err error) {
-	return natsio.ClientRequest[GetPartnerInfoByCodeReq, GetPartnerInfoRes](QueueName.CheckPermission, req)
+	return natsio.ClientRequest[GetPartnerInfoByCodeReq, GetPartnerInfoRes](QueueName.GetPartnerInfo, req)
 }
 
 // CheckPermission ...
