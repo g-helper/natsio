@@ -18,9 +18,9 @@ type QueueService interface {
 	GetUserInfo(req GetUserInfoReq) (res *GetUserInfoRes, err error)
 }
 
-type UnimplementedStaffServer struct{}
+type UnimplementedServer struct{}
 
-func (UnimplementedStaffServer) GetUserInfo(req GetUserInfoReq) (res *GetUserInfoRes, err error) {
+func (UnimplementedServer) GetUserInfo(req GetUserInfoReq) (res *GetUserInfoRes, err error) {
 	return nil, errors.New("method GetUserInfo not implemented")
 }
 
