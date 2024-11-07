@@ -4,6 +4,7 @@ import "github.com/g-helper/natsio"
 
 type ClientInterface interface {
 	CheckPermission(req CheckPermissionReq) (res CheckPermissionRes, err error)
+	GetPartnerInfo(req GetPartnerInfoByCodeReq) (res GetPartnerInfoRes, err error)
 }
 
 func NewClient() ClientInterface {
@@ -11,6 +12,10 @@ func NewClient() ClientInterface {
 }
 
 type client struct {
+}
+
+func (c client) GetPartnerInfo(req GetPartnerInfoByCodeReq) (res GetPartnerInfoRes, err error) {
+	return natsio.ClientRequest[GetPartnerInfoByCodeReq, GetPartnerInfoRes](QueueName.CheckPermission, req)
 }
 
 // CheckPermission ...

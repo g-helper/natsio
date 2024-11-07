@@ -1,11 +1,7 @@
 package natsiostaff
 
 import (
-	"encoding/json"
-
 	"github.com/g-helper/natsio"
-
-	"github.com/nats-io/nats.go"
 )
 
 const (
@@ -19,24 +15,12 @@ var serviceDesc = natsio.ServiceDesc{
 			Worker:  Worker,
 			Handle:  _Staff_Add_CheckPermission,
 		},
+		{
+			Subject: QueueName.GetPartnerInfo,
+			Worker:  Worker,
+			Handle:  _Staff_Add_GetPartnerInfo,
+		},
 	},
-}
-
-func _Staff_Add_CheckPermission(q interface{}) nats.MsgHandler {
-	queueStaff := q.(QueueService)
-	return func(msg *nats.Msg) {
-		var (
-			req CheckPermissionReq
-		)
-		_ = json.Unmarshal(msg.Data, &req)
-		res, err := queueStaff.CheckPermission(req)
-		if err != nil {
-			_ = natsio.Response(msg, nil, err.Error())
-			return
-		}
-		_ = natsio.Response(msg, res, "")
-		return
-	}
 }
 
 // RegisterServer ...
