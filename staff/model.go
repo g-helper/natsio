@@ -15,6 +15,7 @@ type CheckPermissionRes struct {
 // GetPartnerInfoByCodeReq ...
 type GetPartnerInfoByCodeReq struct {
 	Code []string `json:"codes"`
+	Ids  []string `json:"ids"`
 }
 
 // GetPartnerInfoRes ...
