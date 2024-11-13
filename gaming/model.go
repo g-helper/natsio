@@ -22,4 +22,5 @@ type GameInfo struct {
 	StartAt     time.Time `json:"startAt"`
 	EndAt       time.Time `json:"endAt"`
 	IsAvailable bool      `json:"isAvailable"`
+	Link        string    `json:"link"`
 }
