@@ -15,6 +15,7 @@ type GetGameInfoRes struct {
 type GameInfo struct {
 	ID          string    `json:"_id"`
 	Title       string    `json:"title"`
+	Type        string    `json:"type"`
 	PartnerId   string    `json:"partnerId"`
 	Desc        string    `json:"desc"`
 	Code        string    `json:"code"`
