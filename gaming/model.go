@@ -3,9 +3,9 @@ package natsiogaming
 import "time"
 
 type GetGameInfoReq struct {
-	Ids         []string `json:"ids"`
-	Code        []string `json:"code"`
-	PartnerCode string   `json:"partnerCode"`
+	Ids        []string `json:"ids"`
+	Code       []string `json:"code"`
+	PartnerIds []string `json:"partnerIds"`
 }
 
 type GetGameInfoRes struct {
