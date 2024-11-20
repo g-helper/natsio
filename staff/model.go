@@ -1,5 +1,15 @@
 package natsiostaff
 
+// StaffInfoResponse ...
+type StaffInfoResponse struct {
+	ID         string   `json:"_id"`
+	Name       string   `json:"name"`
+	Avatar     string   `json:"avatar"`
+	Permission []string `json:"permission"`
+	IsRoot     bool     `json:"isRoot"`
+	Partner    string   `json:"partner"`
+}
+
 // CheckPermissionReq ...
 type CheckPermissionReq struct {
 	Token      string   `json:"token"`
@@ -8,8 +18,8 @@ type CheckPermissionReq struct {
 
 // CheckPermissionRes ...
 type CheckPermissionRes struct {
-	IsAccess   bool     `json:"isAccess"`
-	Permission []string `json:"permission"`
+	IsAccess bool              `json:"isAccess"`
+	Data     StaffInfoResponse `json:"data"`
 }
 
 // GetPartnerInfoByCodeReq ...
