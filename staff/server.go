@@ -25,6 +25,11 @@ var serviceDesc = natsio.ServiceDesc{
 			Worker:  Worker,
 			Handle:  _Staff_Add_GetPartnerInfoByAccessKey,
 		},
+		{
+			Subject: QueueName.GetStaffInfo,
+			Worker:  Worker,
+			Handle:  _Staff_Get_Info,
+		},
 	},
 }
 

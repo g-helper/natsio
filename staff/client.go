@@ -3,6 +3,7 @@ package natsiostaff
 import "github.com/g-helper/natsio"
 
 type ClientInterface interface {
+	GetStaffInfo(req GetStaffInfoReq) (res GetStaffInfoRes, err error)
 	CheckPermission(req CheckPermissionReq) (res CheckPermissionRes, err error)
 	GetPartnerInfo(req GetPartnerInfoByCodeReq) (res GetPartnerInfoRes, err error)
 	GetPartnerInfoByAccessKey(req GetPartnerInfoByAccessKeyReq) (res GetPartnerInfoByAccessKeyRes, err error)
@@ -13,6 +14,10 @@ func NewClient() ClientInterface {
 }
 
 type client struct {
+}
+
+func (c client) GetStaffInfo(req GetStaffInfoReq) (res GetStaffInfoRes, err error) {
+	return natsio.ClientRequest[GetStaffInfoReq, GetStaffInfoRes](QueueName.GetStaffInfo, req)
 }
 
 func (c client) GetPartnerInfoByAccessKey(req GetPartnerInfoByAccessKeyReq) (res GetPartnerInfoByAccessKeyRes, err error) {

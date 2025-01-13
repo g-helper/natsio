@@ -1,5 +1,16 @@
 package natsiostaff
 
+// GetStaffInfoReq ...
+type GetStaffInfoReq struct {
+	Ids     []string `json:"ids"`
+	Partner string   `json:"partner"`
+}
+
+// GetStaffInfoRes ...
+type GetStaffInfoRes struct {
+	Data []StaffInfoResponse `json:"data"`
+}
+
 // StaffInfoResponse ...
 type StaffInfoResponse struct {
 	ID         string   `json:"_id"`
