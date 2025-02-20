@@ -20,8 +20,9 @@ type UserInfo struct {
 }
 
 type UpsertUserReq struct {
-	SourceId    string `json:"sourceId"`
-	SourceName  string `json:"sourceName"`
-	PartnerId   string `json:"partnerId"`
-	PartnerCode string `json:"partnerCode"`
+	SourceId     string `json:"sourceId"`
+	SourceName   string `json:"sourceName"`
+	SourceAvatar string `json:"sourceAvatar"`
+	PartnerId    string `json:"partnerId"`
+	PartnerCode  string `json:"partnerCode"`
 }
